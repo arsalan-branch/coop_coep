@@ -27,15 +27,15 @@
         }, { _q:[], _v:1 }, ['init','setIdentity','track','link','sendSMS','logout','deepview']);
 
         // Initialize Branch SDK with your key
-//        branch.init('key_live_jAozxBAhXn9NYeOS8Vj8BefnDxdempwR', { tracking_disabled: false }, function(err, data) {
-//     if (err) {
-//         console.error('Branch initialization error:', err);
-//     } else {
-//         console.log('Branch initialized successfully:', data);
-//     }
-// });
+       branch.init('key_live_jAozxBAhXn9NYeOS8Vj8BefnDxdempwR',function(err, data) {
+    if (err) {
+        console.error('Branch initialization error:', err);
+    } else {
+        console.log('Branch initialized successfully:', data);
+    }
+});
 
-        branch.init( 'key_live_jAozxBAhXn9NYeOS8Vj8BefnDxdempwR', {‘tracking_disabled’ : false});
+        // branch.init( 'key_live_jAozxBAhXn9NYeOS8Vj8BefnDxdempwR', {‘tracking_disabled’ : false});
 
         // Example: Trigger a custom event on button click
         document.getElementById('custom-event').addEventListener('click', function () {

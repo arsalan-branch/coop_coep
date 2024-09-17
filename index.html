@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Branch Web SDK Demo</title>
+        <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
     <h1>Branch Web SDK Demo</h1>
+    <div class="button-container">
+        <button id="custom-event">Trigger Custom Event</button>
+    </div>
 
     <script type="text/javascript">
         // Load Branch SDK
@@ -22,13 +27,36 @@
         }, { _q:[], _v:1 }, ['init','setIdentity','track','link','sendSMS','logout','deepview']);
 
         // Initialize Branch SDK with your key
-        branch.init('key_live_jAozxBAhXn9NYeOS8Vj8BefnDxdempwR', function(err, data) {
-            if (err) {
-                console.error('Branch initialization error:', err);
-            } else {
-                console.log('Branch initialized successfully:', data);
-            }
+       branch.init('key_live_jAozxBAhXn9NYeOS8Vj8BefnDxdempwR', { tracking_disabled: false }, function(err, data) {
+    if (err) {
+        console.error('Branch initialization error:', err);
+    } else {
+        console.log('Branch initialized successfully:', data);
+    }
+});
+
+        // Example: Trigger a custom event on button click
+        document.getElementById('custom-event').addEventListener('click', function () {
+            // Define custom event data
+            var customData = {
+                "Custom_Event_Property_Key1": "Custom_Event_Property_val1",
+                "Custom_Event_Property_Key2": "Custom_Event_Property_val2"
+            };
+
+            // Log custom event
+            branch.logEvent(
+                'custom_event_name',
+                customData,
+                function (err) {
+                    if (err) {
+                        console.error('Failed to log custom event:', err);
+                    } else {
+                        console.log('Custom event logged successfully');
+                    }
+                }
+            );
         });
+
     </script>
 </body>
 </html>
